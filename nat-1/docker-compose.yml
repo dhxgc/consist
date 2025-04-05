@@ -1,0 +1,6 @@
+services:
+  nat-1:
+    image: test-nat:1.2
+    ports:
+      - 80:80
+    volumes:
