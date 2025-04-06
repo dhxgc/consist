@@ -16,27 +16,27 @@ def encrypt_data(content):
     import base64
     return base64.b64encode(bytes(t)).decode('utf-8')
 
-def init_db():
-    conn = sqlite3.connect(DATABASE)
-    c = conn.cursor()
-    c.execute('''CREATE TABLE IF NOT EXISTS messages
-                 (id INTEGER PRIMARY KEY AUTOINCREMENT,
-                  content TEXT,
-                  timestamp DATETIME)''')
+# def init_db():
+#     conn = sqlite3.connect(DATABASE)
+#     c = conn.cursor()
+#     c.execute('''CREATE TABLE IF NOT EXISTS messages
+#                  (id INTEGER PRIMARY KEY AUTOINCREMENT,
+#                   content TEXT,
+#                   timestamp DATETIME)''')
 
-    # Шифруем флаг для проверки
-    flag = "flag{This is not the end yet! =)}"
-    encrypted_flag = encrypt_data(flag)  # Используем ту же функцию шифрования
+#     # Шифруем флаг для проверки
+#     flag = "flag{This is not the end yet! =)}"
+#     encrypted_flag = encrypt_data(flag)  # Используем ту же функцию шифрования
     
-    # Проверяем существование именно ЗАШИФРОВАННОГО флага
-    c.execute("SELECT content FROM messages WHERE content = ?", (encrypted_flag,))
+#     # Проверяем существование именно ЗАШИФРОВАННОГО флага
+#     c.execute("SELECT content FROM messages WHERE content = ?", (encrypted_flag,))
     
-    if not c.fetchone():
-        c.execute("INSERT INTO messages (content, timestamp) VALUES (?, ?)",
-                 (encrypted_flag, datetime.now()))
+#     if not c.fetchone():
+#         c.execute("INSERT INTO messages (content, timestamp) VALUES (?, ?)",
+#                  (encrypted_flag, datetime.now()))
     
-    conn.commit()
-    conn.close()
+#     conn.commit()
+#     conn.close()
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -58,5 +58,5 @@ def index():
     return render_template('index.html', messages=messages)
 
 if __name__ == '__main__':
-    init_db()
+    # init_db()
     app.run(host='127.0.0.1', debug=True)
