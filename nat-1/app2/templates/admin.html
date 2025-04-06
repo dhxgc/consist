@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .flag-section { margin-bottom: 30px; padding: 15px; background-color: #f0f0f0; }
+        .command-section { margin-bottom: 20px; }
+        input[type="text"] { width: 300px; padding: 5px; }
+        pre { background-color: #f8f8f8; padding: 10px; border: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+    <div class="flag-section">
+        <h2>Flag Section</h2>
+        {% block flag_content %}
+        <p>FLAG{}</p>
+        {% endblock %}
+    </div>
+
+    <div class="command-section">
+        <h2>Command Execution</h2>
+        <form method="POST">
+            <input type="text" name="command" placeholder="Enter command" required>
+            <button type="submit">Execute</button>
+        </form>
+    </div>
+
+    {% if result %}
+    <div class="result-section">
+        <h3>Command Result:</h3>
+        <pre>{{ result }}</pre>
+    </div>
+    {% endif %}
+</body>
+</html>
