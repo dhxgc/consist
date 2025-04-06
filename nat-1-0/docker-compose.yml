@@ -1,0 +1,8 @@
+services:
+  nat-1:
+    image: test-nat:3.0-with-2app-2.0
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./.htpasswd:/etc/nginx/.htpasswd
