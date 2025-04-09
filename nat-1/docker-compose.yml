@@ -1,7 +1,5 @@
 services:
   nat-1:
-    image: test-nat:3.0-with-2app-2.0
+    image: dhxgc/consist:path-traversal
     ports:
       - 80:80
-    volumes:
-      - ./other-steps/nginx.conf:/etc/nginx/conf.d/default.conf
