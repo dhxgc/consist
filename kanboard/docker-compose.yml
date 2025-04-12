@@ -1,0 +1,10 @@
+version: '3.9'
+# SQLite
+
+name: kanboard
+services:
+  kanboard:
+    image: kanboard/kanboard:v1.2.40
+    network_mode: host
+    environment:
+      PLUGIN_INSTALLER: true
