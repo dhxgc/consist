@@ -1,0 +1,29 @@
+services:
+  bookstack:
+    image: lscr.io/linuxserver/bookstack:23.10.2
+    container_name: bookstack
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - APP_URL='http://172.31.0.240'
+      - APP_KEY='base64:HBMw9jHlr8h8TGcLKTcO7ZJa0e8JDvBu1X5CXvJ5+Pw='
+      - DB_HOST=bookstack-db
+      - DB_PORT=3306
+      - DB_USERNAME=kk
+      - DB_PASSWORD=kk
+      - DB_DATABASE=kk
+    ports:
+      - 80:80
+    restart: unless-stopped
+    depends_on:
+      - mysql
+
+  mysql:
+    container_name: bookstack-db
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=kk
+      - MYSQL_USER=kk
+      - MYSQL_PASSWORD=kk
+      - MYSQL_DATABASE=kk
