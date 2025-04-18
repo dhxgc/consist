@@ -4,7 +4,7 @@ import numpy as np
 df = pd.read_csv("power_grid.csv")
 voltage = df["voltage"].values
 
-samples_per_bit = 100  # SAMPLING_RATE * BIT_DURATION = 10 * 1
+samples_per_bit = 30  # SAMPLING_RATE * BIT_DURATION
 
 bits = []
 for i in range(0, len(voltage), samples_per_bit):
