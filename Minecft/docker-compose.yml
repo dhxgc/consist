@@ -1,0 +1,5 @@
+services:
+  minectf:
+    build: .
+    container_name: minectf
+    hostname: minectf
